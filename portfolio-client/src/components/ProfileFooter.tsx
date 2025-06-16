@@ -79,46 +79,43 @@ export const ProfileFooter = () => {
                     <div className="star-extra" style={{ top: "38%", left: "5%", backgroundColor: "#fef3c7" }} />
 
                     {/* Moon */}
-                    <div className="moon">
+                    <div className="hidden md:block moon">
                         <span className="crater-edge"></span>
                     </div>
                 </div>
             </div>
 
             {/* Footer Content */}
-            <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm">
+            <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm dark:md:pt-12">
                 <div>
-                    <h4 className="font-bold text-lg mb-3">About Us</h4>
-                    <p>Learn more about our mission and values. We aim to bring sunshine to your digital life!</p>
+                    <h4 className="font-bold text-lg mb-3">About Me</h4>
+                    <p>Passionate software developer specializing in TypeScript and React. Crafting clean, user-friendly web experiences.</p>
                 </div>
                 <div>
-                    <h4 className="font-bold text-lg mb-3">Resources</h4>
+                    <h4 className="font-bold text-lg mb-3">Contact</h4>
                     <ul className="space-y-1">
-                        <li><a href="#" className="hover:underline">Blog</a></li>
-                        <li><a href="#" className="hover:underline">Docs</a></li>
-                        <li><a href="#" className="hover:underline">Tutorials</a></li>
+                        <li><a href="mailto:kiyokonee@gmail.com" className="hover:underline">kiyokonee@gmail.com</a></li>
+                        <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:underline">LinkedIn</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 className="font-bold text-lg mb-3">Support</h4>
+                    <h4 className="font-bold text-lg mb-3">Social</h4>
                     <ul className="space-y-1">
-                        <li><a href="#" className="hover:underline">Help Center</a></li>
-                        <li><a href="#" className="hover:underline">Contact Us</a></li>
-                        <li><a href="#" className="hover:underline">Status</a></li>
+                        <li><a href="https://github.com/kiyokonee" target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a></li>
+                        <li><a href="https://twitter.com/kiyokonee" target="_blank" rel="noopener noreferrer" className="hover:underline">Twitter</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 className="font-bold text-lg mb-3">Follow Us</h4>
+                    <h4 className="font-bold text-lg mb-3">Site</h4>
                     <ul className="space-y-1">
-                        <li><a href="#" className="hover:underline">Twitter</a></li>
-                        <li><a href="#" className="hover:underline">Instagram</a></li>
-                        <li><a href="#" className="hover:underline">GitHub</a></li>
+                        <li><a href="#" className="hover:underline">Resume</a></li>
+                        <li><a href="https://github.com/kiyokonee/portfolio" target="_blank" rel="noopener noreferrer" className="hover:underline">Source Code</a></li>
                     </ul>
                 </div>
             </div>
 
             <div className="relative z-10 text-center text-xs mt-10 text-gray-500">
-                &copy; {new Date().getFullYear()} YourSite. All rights reserved.
+                &copy; {new Date().getFullYear()} KiyokoNee. All rights reserved.
             </div>
         </footer>
     )

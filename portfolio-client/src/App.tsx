@@ -5,8 +5,16 @@ import {Hero} from "./sections/Hero.tsx";
 import {Projects} from "./sections/Projects.tsx";
 import {Tools} from "./sections/Tools.tsx";
 import {Contact} from "./sections/Contact.tsx";
+import {useSelector} from "react-redux";
+import type {AppRootState} from "./store/store.ts";
+import {useEffect} from "react";
 
 function App() {
+    const {mode} = useSelector((state:AppRootState) => state.theme)
+
+    useEffect(() => {
+        document.documentElement.classList.toggle("dark", mode === "dark")
+    }, [mode])
 
     return (
         <div >

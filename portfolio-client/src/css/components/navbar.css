@@ -1,0 +1,13 @@
+/* Navbar Styles */
+@layer components {
+    .nav-list {
+    }
+
+    .nav-list--open {
+        @apply sm:max-h-96 pb-4;
+    }
+
+    .nav-list--closed {
+        @apply sm:max-h-0 pb-0;
+    }
+}

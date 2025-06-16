@@ -1,8 +1,13 @@
 import type {ReactNode} from "react";
 
-export const SectionWrapper = ({children}: {children: ReactNode}) => {
+type SectionWrapperProps = {
+    children: ReactNode,
+    id?: string
+}
+
+export const SectionWrapper = ({children, id}: SectionWrapperProps) => {
     return (
-        <section className="max-w-4xl mx-auto px-4 py-16">
+        <section id={id} className="max-w-4xl mx-auto px-4 py-16">
             {children}
         </section>
     )

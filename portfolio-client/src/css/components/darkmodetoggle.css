@@ -1,0 +1,10 @@
+/* DarkModeToggle Styles */
+@layer components {
+    .dark-mode-switch {
+        @apply relative w-12 h-7 rounded-full transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-800
+    }
+
+    .dark-mode-knob {
+        @apply absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white flex items-center justify-center shadow transition-transform duration-300 ease-in-out
+    }
+}

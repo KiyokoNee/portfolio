@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "./css/components/darkmodetoggle.css";
+@import "./css/components/navbar.css";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 .cloud {
