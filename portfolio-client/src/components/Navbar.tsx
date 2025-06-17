@@ -37,18 +37,10 @@ export const Navbar = () => {
                     <nav className="relative flex items-center gap-4">
                         {/* Nav links */}
                         <ul
-                            className={`
-                            
-    transition-max-height duration-300 ease-in-out overflow-hidden
-    flex flex-col w-full max-h-0 pb-0
-
-    ${navBarOpen ? "max-h-[500px] pb-5" : ""}
-    
-    bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#0f172a] dark:to-[#1e293b]
-    absolute left-0 right-0 top-full
-
-    sm:static sm:max-h-none sm:overflow-visible sm:flex-row sm:flex sm:w-auto
-    sm:bg-none sm:dark:bg-none sm:pb-0
+                            className={`transition-max-height duration-300 ease-in-out overflow-hidden flex flex-col w-full max-h-0 pb-0
+                            ${navBarOpen ? "max-h-[500px] pb-5" : ""} bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#0f172a] dark:to-[#1e293b]
+                            absolute left-0 right-0 top-full sm:static sm:max-h-none sm:overflow-visible sm:flex-row sm:flex sm:w-auto
+                            sm:bg-none sm:dark:bg-none sm:pb-0
                             `}
                         >
                             {navLinks.map(({label, href}) => (

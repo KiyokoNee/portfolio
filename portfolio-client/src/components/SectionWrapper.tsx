@@ -7,7 +7,7 @@ type SectionWrapperProps = {
 
 export const SectionWrapper = ({children, id}: SectionWrapperProps) => {
     return (
-        <section id={id} className="max-w-4xl mx-auto px-4 py-16">
+        <section id={id} className="max-w-4xl mx-auto p-4">
             {children}
         </section>
     )
