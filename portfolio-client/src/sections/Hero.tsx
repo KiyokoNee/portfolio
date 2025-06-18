@@ -3,7 +3,7 @@ import {SectionWrapper} from "../components/SectionWrapper.tsx";
 export const Hero = () => {
     return (
         <SectionWrapper id="home">
-            <div className="flex flex-col items-center text-center gap-6 py-20">
+            <div className="flex flex-col items-center text-center gap-6">
                 <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
                     <span className="block">Hi, I’m <span className="text-blue-600 dark:text-sky-300">KiyokoNee</span>.</span>
                 </h1>

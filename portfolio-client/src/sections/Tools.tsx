@@ -15,17 +15,23 @@ const toolsData = [
 export const Tools = () => {
     return (
         <SectionWrapper id="tools">
-            <h2 className="text-3xl font-bold mb-8 text-center">Skills & Tools</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                {toolsData.map(({ name, bgColor, textColor }) => (
-                    <div
-                        key={name}
-                        className={`flex items-center justify-center rounded-lg px-4 py-2 font-semibold shadow-md transition-transform hover:scale-105 cursor-default select-none ${bgColor} ${textColor}`}
-                        title={name}
-                    >
-                        {name}
-                    </div>
-                ))}
+            <div>
+                <h2 className="text-3xl font-bold mb-8 text-center">Skills & Tools</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    {toolsData.map(({ name, bgColor, textColor }) => (
+                        <div
+                            key={name}
+                            className={`flex items-center justify-center rounded-lg px-4 py-2 font-semibold 
+    shadow-md transition-transform hover:scale-105 cursor-default select-none 
+    ${bgColor} ${textColor} 
+    border border-white/40 dark:border-none 
+    shadow-[0_2px_8px_rgba(0,0,0,0.1)] dark:shadow-[0_1px_4px_rgba(0,0,0,0.25)]`}
+                            title={name}
+                        >
+                            {name}
+                        </div>
+                    ))}
+                </div>
             </div>
         </SectionWrapper>
     );
