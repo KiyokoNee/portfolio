@@ -1,7 +1,27 @@
-import {useEffect, useRef} from "react";
+import {type JSX, useEffect, useRef} from "react";
+import {siteMeta} from "../config/siteMeta.ts";
+import { FaGithub, FaLinkedin, FaMastodon, FaTwitter, FaYoutube, FaCode} from "react-icons/fa";
+import {HiOutlineDocumentText, HiOutlineMail} from "react-icons/hi";
+import { PiGlobeSimpleBold } from "react-icons/pi";
+
+const socialIcons: Record<string, JSX.Element> = {
+    github: <FaGithub className="inline-block mr-2" />,
+    linkedin: <FaLinkedin className="inline-block mr-2" />,
+    twitter: <FaTwitter className="inline-block mr-2" />,
+    mastodon: <FaMastodon className="inline-block mr-2" />,
+    youtube: <FaYoutube className="inline-block mr-2" />,
+};
+
+const siteIcons: Record<string, JSX.Element> = {
+    resume: <HiOutlineDocumentText className="inline-block mr-2" />,
+    blog: <PiGlobeSimpleBold className="inline-block mr-2" />,
+    source: <FaCode className="inline-block mr-2" />,
+};
+
 
 export const ProfileFooter = () => {
     const starLayerRef = useRef<HTMLDivElement>(null);
+    const {email, handle, socialLinks, siteLinks} = siteMeta;
 
     // Create shooting star element and add it to starLayerRef container
     const createShootingStar = () => {
@@ -94,28 +114,58 @@ export const ProfileFooter = () => {
                 <div>
                     <h4 className="font-bold text-lg mb-3">Contact</h4>
                     <ul className="space-y-1">
-                        <li><a href="mailto:kiyokonee@gmail.com" className="hover:underline">kiyokonee@gmail.com</a></li>
-                        <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:underline">LinkedIn</a></li>
+                        <li>
+                            <a href={`mailto:${email}`} className="hover:underline flex items-center">
+                                <HiOutlineMail className="inline-block mr-2" />
+                                Email
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h4 className="font-bold text-lg mb-3">Social</h4>
                     <ul className="space-y-1">
-                        <li><a href="https://github.com/kiyokonee" target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a></li>
-                        <li><a href="https://twitter.com/kiyokonee" target="_blank" rel="noopener noreferrer" className="hover:underline">Twitter</a></li>
+                        {Object.entries(socialLinks).map(([key, url]) =>
+                            url ? (
+                                <li key={key}>
+                                    <a
+                                        href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:underline"
+                                    >
+                                        {socialIcons[key] ?? null}
+                                        <span>{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                                    </a>
+                                </li>
+                            ) : null
+                        )}
                     </ul>
                 </div>
                 <div>
                     <h4 className="font-bold text-lg mb-3">Site</h4>
                     <ul className="space-y-1">
-                        <li><a href="#" className="hover:underline">Resume</a></li>
-                        <li><a href="https://github.com/kiyokonee/portfolio" target="_blank" rel="noopener noreferrer" className="hover:underline">Source Code</a></li>
+                        {Object.entries(siteLinks).map(([key, url]) =>
+                            url ? (
+                                <li key={key}>
+                                    <a
+                                        href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:underline"
+                                    >
+                                        {siteIcons[key] ?? null}
+                                        <span>{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                                    </a>
+                                </li>
+                            ) : null
+                        )}
                     </ul>
                 </div>
             </div>
 
             <div className="relative z-10 text-center text-xs mt-10 text-gray-500">
-                &copy; {new Date().getFullYear()} KiyokoNee. All rights reserved.
+                &copy; {new Date().getFullYear()} {handle}. All rights reserved.
             </div>
         </footer>
     )

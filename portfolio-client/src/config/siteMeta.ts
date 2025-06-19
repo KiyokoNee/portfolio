@@ -1,10 +1,23 @@
+import type {SiteSection} from "./siteSections.ts";
+
 type siteMetaData = {
     handle: string,
     fullName: string,
     showFullName: boolean,
     tagline: string,
     domain: string,
-    email: string
+    email: string,
+    socialLinks: {
+        github?: string,
+        linkedin?: string, // Future use
+        mastodon?: string,
+        youtube?: string
+    },
+    siteLinks: {
+        resume?: string, // Future use
+        blog?: string,
+        source?: string
+    }
 }
 
 
@@ -13,12 +26,7 @@ type pageSpecificData = {
     description: string
 }
 
-type pageMetaData = {
-    home: pageSpecificData,
-    projects: pageSpecificData,
-    tools: pageSpecificData,
-    contact: pageSpecificData
-}
+type pageMetaData = Record<SiteSection, pageSpecificData>
 
 export const siteMeta:siteMetaData = {
     handle: "KiyokoNee",
@@ -26,7 +34,13 @@ export const siteMeta:siteMetaData = {
     showFullName: false,
     tagline: "Toolmaker. Web developer. Clean UI enthusiast.",
     domain: "kiyokonee.dev",
-    email: "kiyokonee@gmail.com"
+    email: "kiyokonee@gmail.com",
+    socialLinks: {
+        github: "https://github.com/KiyokoNee",
+    },
+    siteLinks: {
+        source: "https://github.com/KiyokoNee/portfolio"
+    }
 }
 
 export const pageMeta:pageMetaData = {

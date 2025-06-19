@@ -2,16 +2,13 @@ import {DarkModeToggle} from "./DarkModeToggle.tsx";
 import {useState} from "react";
 import {RxCross2} from "react-icons/rx";
 import {IoIosMenu} from "react-icons/io";
-
-const navLinks = [
-    {label: 'Home', href: '#home'},
-    {label: 'Projects', href: '#projects'},
-    {label: 'Toolbox', href: '#tools'},
-    {label: 'Contact', href: '#contact'},
-]
+import {siteSections} from "../config/siteSections.ts";
+import {pageMeta} from "../config/siteMeta.ts";
+import {useActiveSection} from "../hooks/useActiveSection.ts";
 
 export const Navbar = () => {
     const [navBarOpen, setNavBarOpen] = useState<boolean>(false)
+    const activeSection = useActiveSection();
 
     return (
         <header
@@ -31,10 +28,10 @@ export const Navbar = () => {
                 </div>
 
                 {/* Right Side of Screen: NavLinks + Toggle + Menu Hamburger */}
-                <div className="relative flex items-center gap-4">
+                <div className="flex items-center gap-4">
                     {/* Navigation with stars */}
                     {/* Nav + Toggle + Dark Mode */}
-                    <nav className="relative flex items-center gap-4">
+                    <nav className="flex items-center justify-end gap-4">
                         {/* Nav links */}
                         <ul
                             className={`transition-max-height duration-300 ease-in-out overflow-hidden flex flex-col w-full max-h-0 pb-0
@@ -43,9 +40,17 @@ export const Navbar = () => {
                             sm:bg-none sm:dark:bg-none sm:pb-0
                             `}
                         >
-                            {navLinks.map(({label, href}) => (
-                                <li key={label} className="sm:inline-block px-4 py-2 hover-glow">
-                                    <a href={href}>{label}</a>
+                            {siteSections.map((section) => (
+                                <li key={section} className={`px-6 py-3 text-lg sm:text-sm sm:inline-block hover-glow relative ${section === activeSection ? "nav-active" : ""}`}>
+                                    <a
+                                        href={`#${section}`}
+                                        onClick={() => setNavBarOpen(false)}
+                                    >
+                                        {pageMeta[section].title.split(" | ")[0]}
+                                        {/* Randomly sprinkle a star near some links */}
+                                        {section === "home" && <div className="star sm:top-2 sm:right-3 top-13 left-22" style={{ animationDelay: '0.6s' }} />}
+                                        {section === "tools" && <div className="star sm:top-8 sm:left-[-5px] top-15 left-10" style={{ boxShadow: '0 0 3px 1px rgba(255, 255, 255, 0.5)', animationDelay: '0.9s' }} />}
+                                    </a>
                                 </li>
                             ))}
                         </ul>

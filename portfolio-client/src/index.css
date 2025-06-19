@@ -65,6 +65,17 @@
     filter: drop-shadow(0 0 6px rgba(147, 197, 253, 0.6));
 }
 
+/* New class for active nav link */
+.nav-active {
+    font-weight: bold;
+    color: #2563eb; /* Tailwind blue-600 for better contrast in light mode */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.dark .nav-active {
+    color: #fde68a;
+}
 
 .star {
     position: absolute;
