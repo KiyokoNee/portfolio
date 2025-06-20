@@ -10,5 +10,3 @@
 /dataSources.local.xml
 *.xml
 *.iml
-
-*.env
