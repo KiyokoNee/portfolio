@@ -21,7 +21,7 @@ const siteIcons: Record<string, JSX.Element> = {
 
 export const ProfileFooter = () => {
     const starLayerRef = useRef<HTMLDivElement>(null);
-    const {email, handle, socialLinks, siteLinks} = siteMeta;
+    const {handle, socialLinks, siteLinks} = siteMeta;
 
     // Create shooting star element and add it to starLayerRef container
     const createShootingStar = () => {
@@ -115,7 +115,7 @@ export const ProfileFooter = () => {
                     <h4 className="font-bold text-lg mb-3">Contact</h4>
                     <ul className="space-y-1">
                         <li>
-                            <a href={`mailto:${email}`} className="hover:underline flex items-center">
+                            <a href="/contact" className="hover:underline flex items-center">
                                 <HiOutlineMail className="inline-block mr-2" />
                                 Email
                             </a>

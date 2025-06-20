@@ -5,10 +5,14 @@ import {IoIosMenu} from "react-icons/io";
 import {siteSections} from "../config/siteSections.ts";
 import {pageMeta} from "../config/siteMeta.ts";
 import {useActiveSection} from "../hooks/useActiveSection.ts";
+import {useNavigate} from "react-router-dom";
+import {useSectionLink} from "../hooks/useSectionLink.ts";
 
 export const Navbar = () => {
     const [navBarOpen, setNavBarOpen] = useState<boolean>(false)
     const activeSection = useActiveSection();
+    const handleSectionLink = useSectionLink();
+    const navigate = useNavigate();
 
     return (
         <header
@@ -40,16 +44,45 @@ export const Navbar = () => {
                             sm:bg-none sm:dark:bg-none sm:pb-0
                             `}
                         >
-                            {siteSections.map((section) => (
-                                <li key={section} className={`px-6 py-3 text-lg sm:text-sm sm:inline-block hover-glow relative ${section === activeSection ? "nav-active" : ""}`}>
+                            {siteSections.map(({ id, type }) => (
+                                <li
+                                    key={id}
+                                    className={`px-6 py-3 text-lg sm:text-sm sm:inline-block hover-glow relative ${
+                                        id === activeSection ? "nav-active" : ""
+                                    }`}
+                                >
                                     <a
-                                        href={`#${section}`}
-                                        onClick={() => setNavBarOpen(false)}
+                                        href={type === "page" ? `/${id}` : `/#${id}`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setNavBarOpen(false);
+
+                                            if (type === "page") {
+                                                navigate(`/${id}`);
+                                            } else {
+                                                handleSectionLink(id); // defined in the hook below
+                                            }
+                                        }}
+                                        className="cursor-pointer"
                                     >
-                                        {pageMeta[section].title.split(" | ")[0]}
-                                        {/* Randomly sprinkle a star near some links */}
-                                        {section === "home" && <div className="star sm:top-2 sm:right-3 top-13 left-22" style={{ animationDelay: '0.6s' }} />}
-                                        {section === "tools" && <div className="star sm:top-8 sm:left-[-5px] top-15 left-10" style={{ boxShadow: '0 0 3px 1px rgba(255, 255, 255, 0.5)', animationDelay: '0.9s' }} />}
+                                        {pageMeta[id].title.split(" | ")[0]}
+
+                                        {/* Decorative stars */}
+                                        {id === "home" && (
+                                            <div
+                                                className="star sm:top-2 sm:right-3 top-13 left-22"
+                                                style={{ animationDelay: "0.6s" }}
+                                            />
+                                        )}
+                                        {id === "tools" && (
+                                            <div
+                                                className="star sm:top-8 sm:left-[-5px] top-15 left-10"
+                                                style={{
+                                                    boxShadow: "0 0 3px 1px rgba(255, 255, 255, 0.5)",
+                                                    animationDelay: "0.9s",
+                                                }}
+                                            />
+                                        )}
                                     </a>
                                 </li>
                             ))}

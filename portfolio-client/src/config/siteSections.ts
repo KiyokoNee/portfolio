@@ -1,2 +1,6 @@
-export const siteSections = ['home', 'projects', 'tools', 'contact'] as const;
-export type SiteSection = (typeof siteSections)[number];
+export const siteSections = [
+    {id: "home", type: "section"},
+    {id: "projects", type: "section"},
+    {id: "tools", type: "section"},
+    {id: "contact", type: "page"}] as const;
+export type SiteSection = (typeof siteSections)[number]["id"];

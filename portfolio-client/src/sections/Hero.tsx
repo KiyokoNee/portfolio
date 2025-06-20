@@ -24,13 +24,13 @@ export const Hero = () => {
 
                 <div className="flex gap-4 mt-4">
                     <a
-                        href={`#${siteSections[1]}`}
+                        href={`#${siteSections[1].id}`}
                         className="px-6 py-3 rounded-full bg-blue-600 text-white dark:bg-sky-500 dark:text-zinc-900 hover:bg-blue-700 dark:hover:bg-sky-400 transition-colors"
                     >
                         View My Projects
                     </a>
                     <a
-                        href={`#${siteSections[3]}`}
+                        href={`/contact`}
                         className="px-6 py-3 rounded-full border border-blue-600 dark:border-sky-500 text-blue-600 dark:text-sky-400 hover:bg-blue-50 dark:hover:bg-zinc-800 transition-colors"
                     >
                         Get In Touch
