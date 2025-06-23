@@ -1,7 +1,7 @@
-import {Contact} from "../sections/Contact.tsx";
+import {ContactForm} from "../components/ContactForm.tsx";
 
 export const ContactPage = () => {
     return (
-        <Contact />
+        <ContactForm />
     )
 }

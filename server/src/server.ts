@@ -1,4 +1,5 @@
 import express, {NextFunction, Request, Response} from "express";
+import cors from "cors";
 import {sendContactEmail} from "./emailService";
 import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
@@ -50,7 +51,7 @@ const ipBanMiddleware = (req: Request, res: Response, next: NextFunction) => {
     next();
 }
 
-app.use(express.json());
+app.use(express.json(), cors());
 
 app.get("/", (_req: Request, res: Response) => {
     res.send("Server is running");
@@ -75,6 +76,5 @@ app.post("/api/contact", ipBanMiddleware, contactLimiter, async (req: Request, r
 });
 
 app.listen(PORT, () => {
-    console.log("EMAIL_USER:", process.env.EMAIL_USER);
     console.log(`Server listening on port ${PORT}`);
 });

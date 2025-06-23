@@ -8,6 +8,7 @@ import {useDynamicSeo} from "./hooks/useDynamicSeo.ts";
 import {HomePage} from "./pages/HomePage.tsx";
 import {ContactPage} from "./pages/ContactPage.tsx";
 import {Route, Routes} from "react-router-dom";
+import {Toaster} from "react-hot-toast";
 
 function App() {
     const {mode} = useSelector((state:AppRootState) => state.theme)
@@ -26,6 +27,7 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/contact" element={<ContactPage />} />
                 </Routes>
+                <Toaster position="bottom-center" />
             </main>
             <ProfileFooter />
         </div>
