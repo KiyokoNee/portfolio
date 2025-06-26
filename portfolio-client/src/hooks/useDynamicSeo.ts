@@ -1,4 +1,4 @@
-import {pageMeta} from "../config/siteMeta.ts";
+import {pageMeta, siteMeta} from "../config/siteMeta.ts";
 import {useEffect, useState} from "react";
 
 function getCurrentSection(): keyof typeof pageMeta | null {
@@ -24,15 +24,31 @@ function getCurrentSection(): keyof typeof pageMeta | null {
     return visibleSection;
 }
 
+function updateMetaTag(nameOrProperty: string, content: string, isProperty = false) {
+    const attr = isProperty ? "property" : "name";
+    let tag = document.querySelector(`meta[${attr}="${nameOrProperty}"]`);
+    if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attr, nameOrProperty);
+        document.head.appendChild(tag);
+    }
+    tag.setAttribute("content", content);
+}
+
 export function useDynamicSeo() {
     const [currentSection, setCurrentSection] = useState<keyof typeof pageMeta | null>(null);
 
     useEffect(() => {
+        let timeout: number;
+
         function onScroll() {
-            const section = getCurrentSection();
-            if (section && section !== currentSection) {
-                setCurrentSection(section);
-            }
+            clearTimeout(timeout);
+            timeout = window.setTimeout(() => {
+                const section = getCurrentSection();
+                if (section && section !== currentSection) {
+                    setCurrentSection(section);
+                }
+            }, 150)
         }
 
         // Run on mount
@@ -49,12 +65,19 @@ export function useDynamicSeo() {
         const { title, description } = pageMeta[currentSection];
         document.title = title;
 
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (!metaDesc) {
-            metaDesc = document.createElement("meta");
-            metaDesc.setAttribute("name", "description");
-            document.head.appendChild(metaDesc);
-        }
-        metaDesc.setAttribute("content", description);
+        // Standard meta description
+        updateMetaTag("description", description);
+
+        // Open Graph metadata
+        updateMetaTag("og:title", title, true);
+        updateMetaTag("og:description", description, true);
+        updateMetaTag("og:type", "website", true);
+        updateMetaTag("og:site_name", siteMeta.handle, true);
+        updateMetaTag("og:url", window.location.href, true); // or a fixed domain + path
+
+        // Twitter metadata
+        updateMetaTag("twitter:title", title);
+        updateMetaTag("twitter:description", description);
+        updateMetaTag("twitter:card", "summary_large_image");
     }, [currentSection]);
 }

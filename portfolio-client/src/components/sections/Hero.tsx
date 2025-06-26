@@ -11,11 +11,13 @@ export const Hero = () => {
                 </h1>
 
                 <p>
-                    <span className="block text-2xl sm:text-3xl">I build clean, functional web experiences.</span>
+                    <span className="block text-2xl sm:text-3xl">
+                        I design reliable software for web platforms.
+                    </span>
                 </p>
 
                 <p className="text-lg sm:text-xl max-w-2xl text-gray-600 dark:text-zinc-300">
-                    A problem-solving developer with a strong grasp of Object-Oriented Design in Java and a full-stack toolkit built on <strong>Spring Boot</strong>, <strong>React</strong>, and <strong>TypeScript</strong>. I care about both the frontend polish <em>and</em> the backend architecture that makes it all work.
+                    I'm a software developer focused on building maintainable fullstack systems using <strong>React</strong>, <strong>TypeScript</strong>, and <strong>Spring Boot</strong>. I enjoy crafting clear UI workflows and dependable backend services.
                 </p>
 
                 <p className="text-md sm:text-lg text-gray-500 dark:text-zinc-400 max-w-xl">

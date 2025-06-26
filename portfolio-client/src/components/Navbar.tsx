@@ -1,18 +1,30 @@
 import {DarkModeToggle} from "./DarkModeToggle.tsx";
-import {useState} from "react";
 import {RxCross2} from "react-icons/rx";
 import {IoIosMenu} from "react-icons/io";
 import {siteSections} from "../config/siteSections.ts";
 import {pageMeta} from "../config/siteMeta.ts";
 import {useActiveSection} from "../hooks/useActiveSection.ts";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useSectionLink} from "../hooks/useSectionLink.ts";
+import {type Dispatch, type SetStateAction, useEffect} from "react";
 
-export const Navbar = () => {
-    const [navBarOpen, setNavBarOpen] = useState<boolean>(false)
+type Props = {
+    navBarOpen: boolean,
+    setNavBarOpen: Dispatch<SetStateAction<boolean>>
+}
+
+export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
     const activeSection = useActiveSection();
     const handleSectionLink = useSectionLink();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.body.style.overflow = navBarOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+
+    }, [navBarOpen]);
 
     return (
         <header
@@ -35,7 +47,11 @@ export const Navbar = () => {
                 <div className="flex items-center gap-4">
                     {/* Navigation with stars */}
                     {/* Nav + Toggle + Dark Mode */}
-                    <nav className="flex items-center justify-end gap-4">
+                    <nav
+                        className="flex items-center justify-end gap-4"
+                        role="navigation"
+                        aria-label="Main site navigation"
+                    >
                         {/* Nav links */}
                         <ul
                             className={`transition-max-height duration-300 ease-in-out overflow-hidden flex flex-col w-full max-h-0 pb-0
@@ -51,8 +67,10 @@ export const Navbar = () => {
                                         id === activeSection ? "nav-active" : ""
                                     }`}
                                 >
-                                    <a
-                                        href={type === "page" ? `/${id}` : `/#${id}`}
+                                    <Link
+                                        role={"link"}
+                                        tabIndex={0}
+                                        to={type === "page" ? `/${id}` : `/#${id}`}
                                         onClick={(e) => {
                                             e.preventDefault();
                                             setNavBarOpen(false);
@@ -83,7 +101,7 @@ export const Navbar = () => {
                                                 }}
                                             />
                                         )}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

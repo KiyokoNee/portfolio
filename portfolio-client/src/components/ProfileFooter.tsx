@@ -106,10 +106,10 @@ export const ProfileFooter = () => {
             </div>
 
             {/* Footer Content */}
-            <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm dark:md:pt-12">
+            <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm md:pt-12">
                 <div>
                     <h4 className="font-bold text-lg mb-3">About Me</h4>
-                    <p>Passionate software developer specializing in TypeScript and React. Crafting clean, user-friendly web experiences.</p>
+                    <p>Software developer with a focus on React and Spring Boot. I enjoy designing clean interfaces and building backend services that are reliable, secure, and easy to maintain.</p>
                 </div>
                 <div>
                     <h4 className="font-bold text-lg mb-3">Contact</h4>
