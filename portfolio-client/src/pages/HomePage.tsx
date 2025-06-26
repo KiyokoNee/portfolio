@@ -1,6 +1,6 @@
-import {Hero} from "../sections/Hero.tsx";
-import {Projects} from "../sections/Projects.tsx";
-import {Tools} from "../sections/Tools.tsx";
+import {Hero} from "../components/sections/Hero.tsx";
+import {Projects} from "../components/sections/Projects.tsx";
+import {Tools} from "../components/sections/Tools.tsx";
 import {useEffect} from "react";
 
 export const HomePage = () => {

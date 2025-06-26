@@ -1,5 +1,5 @@
-import { SectionWrapper } from "../components/SectionWrapper.tsx";
-import { ProjectCard } from "../components/ProjectCard.tsx";
+import { SectionWrapper } from "../SectionWrapper.tsx";
+import { ProjectCard } from "../ProjectCard.tsx";
 
 const dummyProjects = [
     {

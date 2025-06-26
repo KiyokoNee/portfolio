@@ -1,6 +1,6 @@
-import {SectionWrapper} from "../components/SectionWrapper.tsx";
-import {siteMeta} from "../config/siteMeta.ts";
-import {siteSections} from "../config/siteSections.ts";
+import {SectionWrapper} from "../SectionWrapper.tsx";
+import {siteMeta} from "../../config/siteMeta.ts";
+import {siteSections} from "../../config/siteSections.ts";
 
 export const Hero = () => {
     return (

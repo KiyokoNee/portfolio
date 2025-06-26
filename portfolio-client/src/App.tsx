@@ -27,7 +27,22 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/contact" element={<ContactPage />} />
                 </Routes>
-                <Toaster position="bottom-center" />
+                <Toaster
+                    position="bottom-center"
+                    toastOptions={{
+                        style: {
+                            background: mode === "dark" ? "#1e293b" : "#e0f7ff",
+                            color: mode === "dark" ? "#f1f5f9" : "#0f172a",
+                            border: mode === "dark" ? "1px solid #334155" : "1px solid #bae6fd",
+                        },
+                        success: {
+                            iconTheme: {
+                                primary: "#0ea5e9", // sky-500
+                                secondary: "#ffffff",
+                            },
+                        },
+                    }}
+                />
             </main>
             <ProfileFooter />
         </div>
