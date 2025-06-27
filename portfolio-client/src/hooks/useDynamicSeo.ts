@@ -1,83 +1,88 @@
-import {pageMeta, siteMeta} from "../config/siteMeta.ts";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { navLinks } from "../config/navLinks.ts";
+import { pageMeta, siteMeta } from "../config/siteMeta.ts";
 
-function getCurrentSection(): keyof typeof pageMeta | null {
-    // Get all section elements with id matching keys in pageMeta
-    const sections = Object.keys(pageMeta).map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-
-    // Calculate which section is most visible in viewport
-    let maxVisibleArea = 0;
-    let visibleSection: keyof typeof pageMeta | null = null;
-
-    const viewportHeight = window.innerHeight;
-
-    for (const section of sections) {
-        const rect = section.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > viewportHeight) continue; // outside viewport
-
-        const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-        if (visibleHeight > maxVisibleArea) {
-            maxVisibleArea = visibleHeight;
-            visibleSection = section.id as keyof typeof pageMeta;
-        }
-    }
-    return visibleSection;
-}
-
-function updateMetaTag(nameOrProperty: string, content: string, isProperty = false) {
+// Helper: create or update <meta> tags
+function updateMetaTag(nameOrProp: string, content: string, isProperty = false) {
     const attr = isProperty ? "property" : "name";
-    let tag = document.querySelector(`meta[${attr}="${nameOrProperty}"]`);
+    let tag = document.querySelector(`meta[${attr}="${nameOrProp}"]`);
     if (!tag) {
         tag = document.createElement("meta");
-        tag.setAttribute(attr, nameOrProperty);
+        tag.setAttribute(attr, nameOrProp);
         document.head.appendChild(tag);
     }
     tag.setAttribute("content", content);
 }
 
-export function useDynamicSeo() {
-    const [currentSection, setCurrentSection] = useState<keyof typeof pageMeta | null>(null);
+// Helper: get most visible section based on height in viewport
+function getMostVisibleSection(sectionIds: string[]): string | null {
+    const viewportHeight = window.innerHeight;
+    let maxVisible = 0;
+    let bestMatch: string | null = null;
 
-    useEffect(() => {
-        let timeout: number;
+    for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
 
-        function onScroll() {
-            clearTimeout(timeout);
-            timeout = window.setTimeout(() => {
-                const section = getCurrentSection();
-                if (section && section !== currentSection) {
-                    setCurrentSection(section);
-                }
-            }, 150)
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > viewportHeight) continue;
+
+        const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+        if (visibleHeight > maxVisible) {
+            maxVisible = visibleHeight;
+            bestMatch = id;
         }
+    }
 
-        // Run on mount
-        onScroll();
+    return bestMatch;
+}
 
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, [currentSection]);
+export function useDynamicSeo() {
+    const location = useLocation();
+    const [activeId, setActiveId] = useState<string | null>(null);
 
-    // Update SEO meta when currentSection changes
     useEffect(() => {
-        if (!currentSection) return;
+        const currentPage = navLinks.find(link => link.path === location.pathname);
+        const sectionIds = currentPage?.sections?.map(s => s.id);
 
-        const { title, description } = pageMeta[currentSection];
+        if (sectionIds && sectionIds.length > 0) {
+            let timeout: number;
+
+            function onScroll() {
+                clearTimeout(timeout);
+                timeout = window.setTimeout(() => {
+                    const section = getMostVisibleSection(sectionIds || []);
+                    if (section && section !== activeId) {
+                        setActiveId(section);
+                    }
+                }, 150);
+            }
+
+            onScroll(); // Initial check
+            window.addEventListener("scroll", onScroll, { passive: true });
+            return () => window.removeEventListener("scroll", onScroll);
+        } else {
+            if (currentPage && currentPage.id !== activeId) {
+                setActiveId(currentPage.id);
+            }
+        }
+    }, [location.pathname]);
+
+    useEffect(() => {
+        if (!activeId || !pageMeta[activeId]) return;
+
+        const { title, description } = pageMeta[activeId];
         document.title = title;
 
-        // Standard meta description
         updateMetaTag("description", description);
-
-        // Open Graph metadata
         updateMetaTag("og:title", title, true);
         updateMetaTag("og:description", description, true);
         updateMetaTag("og:type", "website", true);
         updateMetaTag("og:site_name", siteMeta.handle, true);
-        updateMetaTag("og:url", window.location.href, true); // or a fixed domain + path
-
-        // Twitter metadata
+        updateMetaTag("og:url", window.location.href, true);
         updateMetaTag("twitter:title", title);
         updateMetaTag("twitter:description", description);
         updateMetaTag("twitter:card", "summary_large_image");
-    }, [currentSection]);
+    }, [activeId]);
 }

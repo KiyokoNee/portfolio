@@ -1,12 +1,11 @@
 import {DarkModeToggle} from "./DarkModeToggle.tsx";
 import {RxCross2} from "react-icons/rx";
 import {IoIosMenu} from "react-icons/io";
-import {siteSections} from "../config/siteSections.ts";
-import {pageMeta} from "../config/siteMeta.ts";
-import {useActiveSection} from "../hooks/useActiveSection.ts";
-import {Link, useNavigate} from "react-router-dom";
+import {navLinks} from "../config/navLinks.ts";
+import {useNavigate} from "react-router-dom";
 import {useSectionLink} from "../hooks/useSectionLink.ts";
-import {type Dispatch, type SetStateAction, useEffect} from "react";
+import {type Dispatch, type SetStateAction, useEffect, useState} from "react";
+import {FiChevronDown} from "react-icons/fi";
 
 type Props = {
     navBarOpen: boolean,
@@ -14,7 +13,7 @@ type Props = {
 }
 
 export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
-    const activeSection = useActiveSection();
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const handleSectionLink = useSectionLink();
     const navigate = useNavigate();
 
@@ -60,48 +59,64 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
                             sm:bg-none sm:dark:bg-none sm:pb-0
                             `}
                         >
-                            {siteSections.map(({ id, type }) => (
-                                <li
-                                    key={id}
-                                    className={`px-6 py-3 text-lg sm:text-sm sm:inline-block hover-glow relative ${
-                                        id === activeSection ? "nav-active" : ""
-                                    }`}
-                                >
-                                    <Link
-                                        role={"link"}
-                                        tabIndex={0}
-                                        to={type === "page" ? `/${id}` : `/#${id}`}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setNavBarOpen(false);
+                            {navLinks.map(({ id, label, path, sections }) => (
+                                <li key={id} className="relative group px-6 py-3 sm:py-0">
+                                    {sections ? (
+                                        <div className="relative group">
+                                            <button
+                                                className={`text-left w-full sm:w-auto text-lg sm:text-sm flex items-center gap-1 transition-colors ${
+                                                    openDropdown === id ? "text-blue-600 dark:text-sky-300 hover-glow" : "hover-glow"
+                                                }`}
+                                                onClick={() =>
+                                                    setOpenDropdown(openDropdown === id ? null : id)
+                                                }
+                                                aria-haspopup="true"
+                                                aria-expanded={openDropdown === id}
+                                            >
+                                                {label}
+                                                <FiChevronDown
+                                                    className={`transition-transform duration-200 sm:inline-block ${
+                                                        openDropdown === id ? "rotate-180" : ""
+                                                    }`}
+                                                />
+                                            </button>
 
-                                            if (type === "page") {
-                                                navigate(`/${id}`);
-                                            } else {
-                                                handleSectionLink(id); // defined in the hook below
-                                            }
-                                        }}
-                                        className="cursor-pointer"
-                                    >
-                                        {pageMeta[id].title.split(" | ")[0]}
-
-                                        {/* Decorative stars */}
-                                        {id === "home" && (
-                                            <div
-                                                className="star sm:top-2 sm:right-3 top-13 left-22"
-                                                style={{ animationDelay: "0.6s" }}
-                                            />
-                                        )}
-                                        {id === "tools" && (
-                                            <div
-                                                className="star sm:top-8 sm:left-[-5px] top-15 left-10"
-                                                style={{
-                                                    boxShadow: "0 0 3px 1px rgba(255, 255, 255, 0.5)",
-                                                    animationDelay: "0.9s",
-                                                }}
-                                            />
-                                        )}
-                                    </Link>
+                                            <ul
+                                                className={`
+      sm:absolute sm:top-full sm:left-0 sm:mt-2 sm:rounded-2xl sm:shadow-lg sm:z-50
+      bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#1e293b] dark:to-[#0f172a]
+      border border-zinc-200 dark:border-zinc-600
+      sm:min-w-[180px] sm:py-2 sm:px-1
+      ${openDropdown === id ? "block" : "hidden"}
+    `}
+                                            >
+                                                {sections.map((section) => (
+                                                    <li key={section.id}>
+                                                        <button
+                                                            className="w-full text-left px-4 py-2 text-sm rounded-lg hover:bg-blue-100 dark:hover:bg-zinc-700 transition-colors"
+                                                            onClick={() => {
+                                                                handleSectionLink(section.id)
+                                                                setNavBarOpen(false);
+                                                                setOpenDropdown(null);
+                                                            }}
+                                                        >
+                                                            {section.label}
+                                                        </button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ) : (
+                                        <button
+                                            onClick={() => {
+                                                setNavBarOpen(false);
+                                                navigate(path);
+                                            }}
+                                            className="text-lg sm:text-sm hover-glow"
+                                        >
+                                            {label}
+                                        </button>
+                                    )}
                                 </li>
                             ))}
                         </ul>
@@ -111,7 +126,10 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
 
                         {/* Hamburger toggle */}
                         <button
-                            onClick={() => setNavBarOpen(!navBarOpen)}
+                            onClick={() => {
+                                setNavBarOpen(!navBarOpen)
+                                setOpenDropdown(null)
+                            }}
                             className="sm:hidden text-3xl"
                             aria-label={navBarOpen ? "Close navigation menu" : "Open navigation menu"}
                             aria-expanded={navBarOpen}

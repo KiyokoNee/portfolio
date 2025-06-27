@@ -5,7 +5,7 @@ export const Tools = () => {
     return (
         <SectionWrapper id="tools">
             <div>
-                <h2 className="text-3xl font-bold mb-8 text-center">Skills & Tools</h2>
+                <h2 id="tools-heading" className="text-3xl font-bold mb-8 text-center">Skills & Tools</h2>
                 <div className="space-y-10 max-w-5xl mx-auto">
                     {Object.entries(skillsAndTools).map(([category, items]) => (
                         <div key={category}>

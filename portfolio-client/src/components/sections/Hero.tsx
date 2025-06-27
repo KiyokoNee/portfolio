@@ -1,12 +1,12 @@
 import {SectionWrapper} from "../SectionWrapper.tsx";
 import {siteMeta} from "../../config/siteMeta.ts";
-import {siteSections} from "../../config/siteSections.ts";
+import {navLinks} from "../../config/navLinks.ts";
 
 export const Hero = () => {
     return (
-        <SectionWrapper id="home">
+        <SectionWrapper id="hero">
             <div className="flex flex-col items-center text-center gap-6">
-                <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
+                <h1 id="hero-heading" className="text-4xl sm:text-5xl font-bold leading-tight">
                     <span className="block">Hi, I’m <span className="text-blue-600 dark:text-sky-300">{siteMeta.handle}</span>.</span>
                 </h1>
 
@@ -26,7 +26,7 @@ export const Hero = () => {
 
                 <div className="flex gap-4 mt-4">
                     <a
-                        href={`#${siteSections[1].id}`}
+                        href={`#${navLinks[1].id}`}
                         className="px-6 py-3 rounded-full bg-blue-600 text-white dark:bg-sky-500 dark:text-zinc-900 hover:bg-blue-700 dark:hover:bg-sky-400 transition-colors"
                     >
                         View My Projects

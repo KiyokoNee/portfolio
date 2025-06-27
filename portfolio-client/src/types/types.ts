@@ -3,3 +3,8 @@ export type ContactFormData = {
     email: string,
     message: string
 }
+
+export type Section = {
+    id: string,
+    label: string
+}

@@ -1,4 +1,4 @@
-import type {SiteSection} from "./siteSections.ts";
+import {navLinks} from "./navLinks.ts";
 
 type siteMetaData = {
     handle: string,
@@ -26,7 +26,9 @@ type pageSpecificData = {
     description: string
 }
 
-type pageMetaData = Record<SiteSection, pageSpecificData>
+type PageId = typeof navLinks[number]["id"]
+
+type pageMetaData = Record<PageId, pageSpecificData>
 
 export const siteMeta:siteMetaData = {
     handle: "KiyokoNee",
@@ -44,7 +46,7 @@ export const siteMeta:siteMetaData = {
 }
 
 export const pageMeta:pageMetaData = {
-    home: {
+    hero: {
         title: "KiyokoNee | Developer Portfolio",
         description: "Frontend developer & toolmaker. Clean UI, React/TS-focused projects.",
     },
