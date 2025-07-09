@@ -1,4 +1,22 @@
-export const skillsAndTools = {
+export const TOOL_CATEGORIES = [
+    "Languages & Frameworks",
+    "Databases",
+    "Styling & UI",
+    "Tools & Platforms"
+]
+
+export type ToolCategory = (typeof TOOL_CATEGORIES)[number]
+
+type ToolEntry = {
+    name: string,
+    bgColor: string,
+    textColor: string,
+    usage?: "Daily" | "Weekly" | "Occasionally",
+    experienceYears?: number,
+    description?: string
+}
+
+export const skillsAndTools:Record<ToolCategory, ToolEntry[]> = {
     "Languages & Frameworks": [
         { name: "Java", bgColor: "bg-yellow-300", textColor: "text-yellow-900" },
         { name: "Spring Boot", bgColor: "bg-green-300", textColor: "text-green-900" },

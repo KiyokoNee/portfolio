@@ -9,6 +9,9 @@ import {HomePage} from "./pages/HomePage.tsx";
 import {ContactPage} from "./pages/ContactPage.tsx";
 import {Route, Routes} from "react-router-dom";
 import {Toaster} from "react-hot-toast";
+import {ToolsPage} from "./pages/ToolsPage.tsx";
+import {ErrorPage} from "./pages/ErrorPage.tsx";
+import {ProjectsPage} from "./pages/ProjectsPage.tsx";
 
 function App() {
     const [navBarOpen, setNavBarOpen] = useState<boolean>(false)
@@ -27,7 +30,10 @@ function App() {
             <main aria-hidden={navBarOpen} tabIndex={navBarOpen ? -1 : undefined} id="main-content" className="flex flex-col min-h-screen bg-gradient-to-b from-white to-[#ccefff] dark:from-[#1e293b] dark:to-[#0f172a] text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
                 <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/projects" element={<ProjectsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/tools" element={<ToolsPage />} />
+                    <Route path="/*" element={<ErrorPage />} />
                 </Routes>
                 <Toaster
                     position="bottom-center"
