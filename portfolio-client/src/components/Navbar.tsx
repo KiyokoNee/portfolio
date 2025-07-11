@@ -107,15 +107,17 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
                                             </ul>
                                         </div>
                                     ) : (
-                                        <button
-                                            onClick={() => {
-                                                setNavBarOpen(false);
-                                                navigate(path);
-                                            }}
-                                            className="text-lg sm:text-sm hover-glow"
-                                        >
-                                            {label}
-                                        </button>
+                                        <div className="relative group">
+                                            <button
+                                                onClick={() => {
+                                                    setNavBarOpen(false);
+                                                    navigate(path);
+                                                }}
+                                                className="text-left w-full sm:w-auto text-lg sm:text-sm flex items-center gap-1 transition-colors hover-glow"
+                                            >
+                                                {label}
+                                            </button>
+                                        </div>
                                     )}
                                 </li>
                             ))}

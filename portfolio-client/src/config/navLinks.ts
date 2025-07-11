@@ -19,16 +19,6 @@ export const navLinks:NavLink[] = [
         ],
     },
     {
-        id: "projects",
-        label: "Projects",
-        path: "/projects"
-    },
-    {
-        id: "tools",
-        label: "Tools",
-        path: "/tools"
-    },
-    {
         id: "contact",
         label: "Contact",
         path: "/contact"
