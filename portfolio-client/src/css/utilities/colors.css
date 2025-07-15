@@ -1,5 +1,8 @@
 @layer utilities {
     .site-gradient {
-        @apply bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#0f172a] dark:to-[#1e293b];
+        background-image: linear-gradient(to bottom, #ccefff, white);
+    }
+    .dark .site-gradient {
+        background-image: linear-gradient(to bottom, #0f172a, #1e293b);
     }
 }
