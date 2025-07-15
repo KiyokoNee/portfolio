@@ -1,0 +1,9 @@
+@layer components {
+    .tool-chip {
+        @apply flex items-center justify-center rounded-lg px-4 py-2 font-semibold
+        transition-transform hover:scale-105 cursor-default select-none
+        border border-slate-400 dark:border-slate-600
+        shadow-[0_2px_8px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.5)];
+        @apply min-h-12;
+    }
+}

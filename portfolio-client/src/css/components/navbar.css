@@ -1,6 +1,37 @@
 /* Navbar Styles */
 @layer components {
+    .nav-transition {
+        transition: max-height, opacity;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+        overflow: hidden;
+    }
+    /* Base structure for nav links */
+    .nav-link {
+        @apply text-left w-full sm:w-auto text-lg sm:text-sm flex items-center gap-1 transition-colors;
+    }
+
+    /* List item wrapping each nav link */
+    .nav-item {
+        @apply relative px-6 py-3 sm:py-0;
+    }
+
+    /* Dropdown container for section links */
+    .nav-dropdown {
+        @apply sm:absolute sm:top-full sm:left-0 sm:mt-2 sm:rounded-2xl sm:shadow-lg sm:z-50
+        bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#1e293b] dark:to-[#0f172a]
+        border border-zinc-200 dark:border-zinc-600
+        sm:min-w-[180px] sm:py-2 sm:px-1;
+    }
+
+    .nav-dropdown-button {
+        @apply w-full text-left px-4 py-2 text-sm rounded-lg transition-colors;
+    }
+
     .nav-list {
+        @apply duration-300 ease-in-out overflow-hidden flex flex-col w-full max-h-0 pb-0
+        absolute left-0 right-0 top-full sm:static sm:max-h-none sm:overflow-visible sm:flex-row sm:flex sm:w-auto
+        bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#0f172a] dark:to-[#1e293b] sm:bg-none sm:dark:bg-none;
     }
 
     .nav-list--open {

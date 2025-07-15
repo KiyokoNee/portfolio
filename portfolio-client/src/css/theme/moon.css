@@ -1,0 +1,49 @@
+.moon {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #fdf6e3, #d9d4c1);
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 200, 0.2);
+    overflow: hidden;
+}
+
+/* Crater effects */
+.moon::before,
+.moon::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(100, 85, 60, 0.1); /* slightly warmer + higher contrast */
+    filter: blur(0.5px); /* slightly sharper than before */
+    pointer-events: none;
+}
+
+.moon::before {
+    top: 18%;
+    left: 35%;
+    width: 10px;
+    height: 10px;
+}
+
+.moon::after {
+    top: 58%;
+    left: 20%;
+    width: 7px;
+    height: 7px;
+}
+
+/* Additional bottom-right crater */
+.moon .crater-edge {
+    position: absolute;
+    bottom: 4px;  /* Extends beyond */
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(100, 100, 100, 0.1);
+    filter: blur(1px);
+    pointer-events: none;
+}

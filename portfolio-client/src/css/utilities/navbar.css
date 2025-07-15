@@ -1,0 +1,27 @@
+@layer utilities {
+    .hover-glow {
+        transition: color 0.3s ease, filter 0.3s ease;
+    }
+
+    .hover-glow:hover {
+        color: #2563eb;
+        filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.4));
+    }
+
+    .dark .hover-glow:hover {
+        color: #fde68a;
+        filter: drop-shadow(0 0 6px rgba(147, 197, 253, 0.6));
+    }
+
+    /* New class for active nav link */
+    .nav-active {
+        font-weight: bold;
+        color: #2563eb; /* Tailwind blue-600 for better contrast in light mode */
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    .dark .nav-active {
+        color: #fde68a;
+    }
+}

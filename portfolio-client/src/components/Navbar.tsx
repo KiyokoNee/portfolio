@@ -53,19 +53,15 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
                     >
                         {/* Nav links */}
                         <ul
-                            className={`transition-max-height duration-300 ease-in-out overflow-hidden flex flex-col w-full max-h-0 pb-0
-                            ${navBarOpen ? "max-h-[500px] pb-5" : ""} bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#0f172a] dark:to-[#1e293b]
-                            absolute left-0 right-0 top-full sm:static sm:max-h-none sm:overflow-visible sm:flex-row sm:flex sm:w-auto
-                            sm:bg-none sm:dark:bg-none sm:pb-0
-                            `}
+                            className={`nav-list nav-transition ${navBarOpen ? "max-h-[500px] pb-5" : ""}`}
                         >
                             {navLinks.map(({ id, label, path, sections }) => (
-                                <li key={id} className="relative group px-6 py-3 sm:py-0">
+                                <li key={id} className="nav-item group">
                                     {sections ? (
-                                        <div className="relative group">
+                                        <div>
                                             <button
-                                                className={`text-left w-full sm:w-auto text-lg sm:text-sm flex items-center gap-1 transition-colors ${
-                                                    openDropdown === id ? "text-blue-600 dark:text-sky-300 hover-glow" : "hover-glow"
+                                                className={`nav-link hover-glow ${
+                                                    openDropdown === id ? "nav-active" : ""
                                                 }`}
                                                 onClick={() =>
                                                     setOpenDropdown(openDropdown === id ? null : id)
@@ -82,18 +78,12 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
                                             </button>
 
                                             <ul
-                                                className={`
-      sm:absolute sm:top-full sm:left-0 sm:mt-2 sm:rounded-2xl sm:shadow-lg sm:z-50
-      bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#1e293b] dark:to-[#0f172a]
-      border border-zinc-200 dark:border-zinc-600
-      sm:min-w-[180px] sm:py-2 sm:px-1
-      ${openDropdown === id ? "block" : "hidden"}
-    `}
+                                                className={`nav-dropdown ${openDropdown === id ? "block" : "hidden"}`}
                                             >
                                                 {sections.map((section) => (
                                                     <li key={section.id}>
                                                         <button
-                                                            className="w-full text-left px-4 py-2 text-sm rounded-lg hover:bg-blue-100 dark:hover:bg-zinc-700 transition-colors"
+                                                            className="nav-dropdown-button hover:bg-blue-100 dark:hover:bg-zinc-700"
                                                             onClick={() => {
                                                                 handleSectionLink(section.id)
                                                                 setNavBarOpen(false);
@@ -113,7 +103,7 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
                                                     setNavBarOpen(false);
                                                     navigate(path);
                                                 }}
-                                                className="text-left w-full sm:w-auto text-lg sm:text-sm flex items-center gap-1 transition-colors hover-glow"
+                                                className="nav-link hover-glow"
                                             >
                                                 {label}
                                             </button>

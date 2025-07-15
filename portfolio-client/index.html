@@ -16,6 +16,10 @@
           const shouldUseDark = stored === "dark" || (!stored && prefersDark);
           if (shouldUseDark) {
             document.documentElement.classList.add("dark");
+            document.documentElement.style.backgroundColor = "#0f172a"; // match your dark background
+          } else {
+            document.documentElement.classList.remove("dark");
+            document.documentElement.style.backgroundColor = "#ffffff"; // match your light background
           }
         } catch (_) {}
       })();

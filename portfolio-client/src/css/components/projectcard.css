@@ -1,0 +1,28 @@
+@layer components {
+    .project-card {
+        @apply flex flex-col h-full;
+        @apply dark:bg-[#334155] border border-zinc-200 dark:border-[#475569]
+        rounded-lg p-6 shadow-sm transition-colors;
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+    .dark .project-card {
+        background-color: rgba(51, 65, 85, 0.7); /* dark:bg-slate-700 with opacity */
+    }
+
+    .project-title {
+        @apply text-xl font-semibold mb-2 text-center;
+    }
+
+    .project-description {
+        @apply text-gray-700 dark:text-zinc-300 mb-4;
+    }
+
+    .project-tag {
+        @apply px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800
+        dark:bg-sky-900 dark:text-sky-300 rounded;
+    }
+
+    .project-link {
+        @apply text-blue-600 dark:text-sky-400 hover:underline;
+    }
+}

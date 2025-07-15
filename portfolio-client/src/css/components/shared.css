@@ -1,0 +1,5 @@
+@layer components {
+    .category-heading {
+        @apply text-xl font-semibold mb-4 text-sky-700 dark:text-sky-300;
+    }
+}

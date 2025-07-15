@@ -1,0 +1,40 @@
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.6;
+    filter: blur(8px);
+}
+
+.cloud-1 {
+    width: 120px;
+    height: 60px;
+    top: 10%;
+    left: -200px;
+    animation: moveCloud 60s linear infinite;
+}
+
+.cloud-2 {
+    width: 180px;
+    height: 90px;
+    top: 35%;
+    left: -300px;
+    animation: moveCloud 90s linear infinite;
+}
+
+.cloud-3 {
+    width: 100px;
+    height: 50px;
+    top: 60%;
+    left: -150px;
+    animation: moveCloud 75s linear infinite;
+}
+
+@keyframes moveCloud {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(120vw);
+    }
+}

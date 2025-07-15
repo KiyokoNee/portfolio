@@ -9,7 +9,7 @@ export const SectionWrapper = ({children, id}: SectionWrapperProps) => {
     const labelledBy = id ? `${id}-heading` : undefined
 
     return (
-        <section id={id} aria-labelledby={labelledBy} className="max-w-4xl mx-auto px-4 py-24 sm:py-32">
+        <section id={id} aria-labelledby={labelledBy} className="section-wrapper">
             {children}
         </section>
     )

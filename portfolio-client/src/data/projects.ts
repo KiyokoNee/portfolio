@@ -22,6 +22,6 @@ export const dummyProjects:Project[] = [
         title: "Portfolio Site",
         description: "This very site! Built from scratch using modern frontend tooling with a focus on accessibility and clean UI.",
         tags: ["Vite", "React", "Tailwind"],
-        link: "#"
+        link: "https://github.com/KiyokoNee/portfolio"
     }
 ];

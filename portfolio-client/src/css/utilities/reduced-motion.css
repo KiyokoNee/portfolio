@@ -1,0 +1,28 @@
+@media (prefers-reduced-motion: reduce) {
+    /* Disable all background animations for motion-sensitive users */
+
+    .cloud-1,
+    .cloud-2,
+    .cloud-3,
+    .star,
+    .shooting-star-container,
+    .shooting-star-tail {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Specifically target Dark Mode Toggle animations */
+    .dark-mode-switch,
+    .dark-mode-knob {
+        transition: none !important;
+    }
+
+    /* Optional: fade in elements instantly if you use transition delays elsewhere */
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+    html {
+        transition: background-color 0.01s ease-in-out, color 0.01s ease-in-out;
+    }
+}
