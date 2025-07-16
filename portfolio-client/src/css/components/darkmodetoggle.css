@@ -1,7 +1,7 @@
 /* DarkModeToggle Styles */
 @layer components {
     .dark-mode-switch {
-        @apply relative w-12 h-7 rounded-full transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-800
+        @apply relative w-12 h-7 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-800
     }
 
     .dark-mode-knob {

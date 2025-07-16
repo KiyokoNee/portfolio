@@ -27,7 +27,7 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
 
     return (
         <header
-            className="sticky top-0 z-50 site-gradient text-gray-800 dark:text-gray-200 py-4 px-6 shadow-md transition-colors duration-50">
+            className="sticky top-0 z-50 site-gradient text-gray-800 dark:text-gray-200 py-4 px-6 shadow-md">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo / Site Name with stars */}
                 <div className="text-2xl font-bold tracking-tight relative">

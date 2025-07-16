@@ -73,7 +73,7 @@ export const ProfileFooter = () => {
         };
     }, []);
     return (
-        <footer className="relative site-gradient text-gray-700 dark:text-gray-300 py-16 px-6 overflow-hidden transition-colors duration-500">
+        <footer className="relative site-gradient text-gray-700 dark:text-gray-300 py-16 px-6 overflow-hidden">
             {/* Sky Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* Light Mode Clouds */}
