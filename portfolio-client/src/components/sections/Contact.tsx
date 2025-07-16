@@ -1,4 +1,4 @@
-import {SectionWrapper} from "../SectionWrapper.tsx";
+import {SectionWrapper} from "./SectionWrapper.tsx";
 
 export const Contact = () => {
     return (

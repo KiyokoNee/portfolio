@@ -1,4 +1,4 @@
-import {SectionWrapper} from "../SectionWrapper.tsx";
+import {SectionWrapper} from "./SectionWrapper.tsx";
 import {siteMeta} from "../../config/siteMeta.ts";
 import {navLinks} from "../../config/navLinks.ts";
 

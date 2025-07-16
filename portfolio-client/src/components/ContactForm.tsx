@@ -32,7 +32,7 @@ export const ContactForm = () => {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col w-full max-w-xl space-y-4 rounded-2xl bg-white/60 dark:bg-slate-800/60 p-6 shadow-lg ring-1 ring-zinc-200 dark:ring-slate-700 backdrop-blur"
+            className="contact-form-wrapper"
         >
             <SmartInput
                 id={"name"}
@@ -63,7 +63,7 @@ export const ContactForm = () => {
             <button
                 type={"submit"}
                 disabled={isSubmitting}
-                className="w-50 mx-auto rounded-lg bg-sky-500 hover:bg-sky-600 dark:bg-violet-600 dark:hover:bg-violet-700 px-4 py-2 text-white font-semibold transition-colors disabled:opacity-50"
+                className="submit-button"
             >
                 {
                     isSubmitting ?

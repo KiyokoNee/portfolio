@@ -5,4 +5,11 @@
     .dark .site-gradient {
         background-image: linear-gradient(to bottom, #0f172a, #1e293b);
     }
+
+    .site-gradient-inverse {
+        background-image: linear-gradient(to bottom, white, #ccefff);
+    }
+    .dark .site-gradient-inverse {
+        background-image: linear-gradient(to bottom, #1e293b, #0f172a);
+    }
 }

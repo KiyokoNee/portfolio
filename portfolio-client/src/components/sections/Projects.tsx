@@ -1,4 +1,4 @@
-import { SectionWrapper } from "../SectionWrapper.tsx";
+import { SectionWrapper } from "./SectionWrapper.tsx";
 import { ProjectCard } from "../ProjectCard.tsx";
 import {dummyProjects} from "../../data/projects.ts";
 

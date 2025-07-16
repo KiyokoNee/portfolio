@@ -1,9 +1,9 @@
 import {DarkModeToggle} from "./DarkModeToggle.tsx";
 import {RxCross2} from "react-icons/rx";
 import {IoIosMenu} from "react-icons/io";
-import {navLinks} from "../config/navLinks.ts";
+import {navLinks} from "../../config/navLinks.ts";
 import {useNavigate} from "react-router-dom";
-import {useSectionLink} from "../hooks/useSectionLink.ts";
+import {useSectionLink} from "../../hooks/useSectionLink.ts";
 import {type Dispatch, type SetStateAction, useEffect, useState} from "react";
 import {FiChevronDown} from "react-icons/fi";
 
@@ -27,7 +27,7 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
 
     return (
         <header
-            className="sticky top-0 z-50 site-gradient text-gray-800 dark:text-gray-200 py-4 px-6 shadow-md transition-colors duration-500">
+            className="sticky top-0 z-50 site-gradient text-gray-800 dark:text-gray-200 py-4 px-6 shadow-md transition-colors duration-50">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo / Site Name with stars */}
                 <div className="text-2xl font-bold tracking-tight relative">

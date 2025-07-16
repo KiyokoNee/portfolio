@@ -1,4 +1,4 @@
-import { SectionWrapper } from "../SectionWrapper.tsx";
+import { SectionWrapper } from "./SectionWrapper.tsx";
 import {skillsAndTools} from "../../data/tools.ts";
 
 export const Tools = () => {

@@ -1,5 +1,5 @@
 import {type JSX, useEffect, useRef} from "react";
-import {siteMeta} from "../config/siteMeta.ts";
+import {siteMeta} from "../../config/siteMeta.ts";
 import { FaGithub, FaLinkedin, FaMastodon, FaTwitter, FaYoutube, FaCode} from "react-icons/fa";
 import {HiOutlineDocumentText, HiOutlineMail} from "react-icons/hi";
 import { PiGlobeSimpleBold } from "react-icons/pi";

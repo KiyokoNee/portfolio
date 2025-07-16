@@ -1,5 +1,5 @@
-import {Navbar} from "./components/Navbar.tsx";
-import {ProfileFooter} from "./components/ProfileFooter.tsx";
+import {Navbar} from "./components/shared/Navbar.tsx";
+import {ProfileFooter} from "./components/shared/ProfileFooter.tsx";
 import {useSelector} from "react-redux";
 import type {AppRootState} from "./store/store.ts";
 import {useEffect, useState} from "react";
@@ -24,7 +24,7 @@ function App() {
         <div>
             <a href="#main-content" className="sr-only focus:not-sr-only">Skip to main content</a>
             <Navbar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} />
-            <main aria-hidden={navBarOpen} tabIndex={navBarOpen ? -1 : undefined} id="main-content">
+            <main aria-hidden={navBarOpen} tabIndex={navBarOpen ? -1 : undefined} id="main-content" className="site-gradient-inverse">
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/contact" element={<ContactPage />} />

@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import type {AppRootState} from "../store/store.ts";
-import {toggleTheme} from "../store/slices/themeSlice.ts";
+import type {AppRootState} from "../../store/store.ts";
+import {toggleTheme} from "../../store/slices/themeSlice.ts";
 import {FaMoon, FaSun} from "react-icons/fa";
 
 export const DarkModeToggle = () => {

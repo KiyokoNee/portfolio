@@ -1,0 +1,11 @@
+@layer components {
+    .submit-button {
+        @apply w-50 mx-auto rounded-lg px-4 py-2 font-semibold text-white transition-colors disabled:opacity-50;
+        @apply bg-sky-500 hover:bg-sky-600 dark:bg-violet-600 dark:hover:bg-violet-700;
+    }
+
+    .contact-form-wrapper {
+        @apply flex flex-col w-full max-w-xl space-y-4 rounded-2xl p-6 shadow-lg ring-1 backdrop-blur;
+        @apply bg-white/60 ring-zinc-200 dark:bg-slate-800/60 dark:ring-slate-700;
+    }
+}

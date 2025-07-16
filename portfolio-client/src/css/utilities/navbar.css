@@ -1,7 +1,4 @@
 @layer utilities {
-    .hover-glow {
-        transition: color 0.3s ease, filter 0.3s ease;
-    }
 
     .hover-glow:hover {
         color: #2563eb;

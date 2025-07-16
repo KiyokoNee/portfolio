@@ -1,7 +1,6 @@
 @layer base {
     main {
-        @apply flex flex-col min-h-screen text-zinc-900 dark:text-zinc-100 transition-colors duration-300;
-        @apply bg-gradient-to-b from-white to-[#ccefff] dark:from-[#1e293b] dark:to-[#0f172a];
+        @apply flex flex-col min-h-screen text-zinc-900 dark:text-zinc-100;
     }
     section {
         @apply max-w-4xl mx-auto px-4 py-24 sm:py-32;
