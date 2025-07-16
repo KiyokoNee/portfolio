@@ -78,7 +78,7 @@ export const Navbar = ({navBarOpen,setNavBarOpen}:Props) => {
                                             </button>
 
                                             <ul
-                                                className={`nav-dropdown ${openDropdown === id ? "block" : "hidden"}`}
+                                                className={`nav-dropdown site-gradient-inverse ${openDropdown === id ? "block" : "hidden"}`}
                                             >
                                                 {sections.map((section) => (
                                                     <li key={section.id}>
