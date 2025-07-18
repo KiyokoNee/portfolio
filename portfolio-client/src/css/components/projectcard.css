@@ -1,6 +1,6 @@
 @layer components {
     .project-card {
-        @apply flex flex-col h-full;
+        @apply flex flex-col h-full w-75 sm:w-[45%] md:w-[250px];
         @apply dark:bg-[#334155] border border-zinc-200 dark:border-[#475569]
         rounded-lg p-6 shadow-sm transition-colors;
         background-color: rgba(255, 255, 255, 0.6);

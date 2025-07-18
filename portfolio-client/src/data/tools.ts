@@ -41,7 +41,7 @@ export const skillsAndTools:Record<ToolCategory, ToolEntry[]> = {
     "Tools & Platforms": [
         { name: "Git", bgColor: "bg-zinc-300", textColor: "text-zinc-900" },
         { name: "GitHub", bgColor: "bg-zinc-400", textColor: "text-zinc-900" },
-        { name: "Vercel", bgColor: "bg-black", textColor: "text-white" },
+        { name: "Railway", bgColor: "bg-black", textColor: "text-white" },
         { name: "Axios", bgColor: "bg-slate-300", textColor: "text-slate-900" },
         { name: "JWT", bgColor: "bg-rose-300", textColor: "text-rose-900" },
         { name: "RESTful APIs", bgColor: "bg-sky-200", textColor: "text-sky-800" },

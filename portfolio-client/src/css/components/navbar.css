@@ -1,11 +1,5 @@
 /* Navbar Styles */
 @layer components {
-    .nav-transition {
-        transition: max-height, opacity;
-        transition-duration: 300ms;
-        transition-timing-function: ease-in-out;
-        overflow: hidden;
-    }
     /* Base structure for nav links */
     .nav-link {
         @apply text-left w-full sm:w-auto text-lg sm:text-sm flex items-center gap-1 transition-colors;
@@ -28,9 +22,8 @@
     }
 
     .nav-list {
-        @apply duration-300 ease-in-out overflow-hidden flex flex-col w-full max-h-0 pb-0
-        absolute left-0 right-0 top-full sm:static sm:max-h-none sm:overflow-visible sm:flex-row sm:flex sm:w-auto
-        bg-gradient-to-b from-[#e0f7ff] to-white dark:from-[#0f172a] dark:to-[#1e293b] sm:bg-none sm:dark:bg-none;
+        @apply overflow-hidden flex flex-col w-full max-h-0 pb-0 font-semibold
+        absolute left-0 right-0 top-full sm:static sm:max-h-none sm:overflow-visible sm:flex-row sm:flex sm:w-auto;
     }
 
     .nav-list--open {
