@@ -7,7 +7,7 @@ export const ContactPage = () => {
             <div className="shadow-lg rounded-lg p-8 w-full max-w-lg">
                 <h1 className="text-4xl font-bold text-center mb-6">Contact Us</h1>
                 <p className="text-center mb-4">
-                    We would love to hear from you! Please fill out the form below or contact us directly:
+                    I would love to hear from you! Please fill out the form below or contact me directly:
                 </p>
 
                 <ContactForm />
