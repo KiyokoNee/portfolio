@@ -1,7 +1,10 @@
 import {SectionWrapper} from "./SectionWrapper.tsx";
 import {siteMeta} from "../../config/siteMeta.ts";
+import {useSectionLink} from "../../hooks/useSectionLink.ts";
 
 export const Hero = () => {
+    const handleSectionLink = useSectionLink();
+
     return (
         <SectionWrapper id="hero">
             <div className="flex flex-col items-center text-center gap-6">
@@ -24,12 +27,12 @@ export const Hero = () => {
                 </p>
 
                 <div className="flex gap-4 mt-4">
-                    <a
-                        href={`#projects`}
+                    <button
+                        onClick={() => handleSectionLink("projects")}
                         className="project-view"
                     >
                         View My Projects
-                    </a>
+                    </button>
                     <a
                         href={`/contact`}
                         className="contact-outline"
