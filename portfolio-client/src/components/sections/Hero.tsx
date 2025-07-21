@@ -1,6 +1,5 @@
 import {SectionWrapper} from "./SectionWrapper.tsx";
 import {siteMeta} from "../../config/siteMeta.ts";
-import {navLinks} from "../../config/navLinks.ts";
 
 export const Hero = () => {
     return (
@@ -26,7 +25,7 @@ export const Hero = () => {
 
                 <div className="flex gap-4 mt-4">
                     <a
-                        href={`#${navLinks[1].id}`}
+                        href={`#projects`}
                         className="project-view"
                     >
                         View My Projects
