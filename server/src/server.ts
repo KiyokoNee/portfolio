@@ -52,6 +52,7 @@ const ipBanMiddleware = (req: Request, res: Response, next: NextFunction) => {
 }
 
 app.use(express.json(), cors());
+app.set("trust proxy", 1);
 
 app.get("/", (_req: Request, res: Response) => {
     res.send("Server is running");
